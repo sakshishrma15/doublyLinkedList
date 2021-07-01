@@ -1,0 +1,3 @@
+C:/Users/sakshi/doublyLinkedListt/cmake-build-debug/CMakeFiles/doublyLinkedListt.dir
+C:/Users/sakshi/doublyLinkedListt/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/sakshi/doublyLinkedListt/cmake-build-debug/CMakeFiles/rebuild_cache.dir
