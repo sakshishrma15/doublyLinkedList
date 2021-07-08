@@ -85,6 +85,100 @@ void printLinkedList(Node* &head ){
     }
 
 }
+void insertAfterKey(Node* &head,int data,int key){
+    if(head== nullptr){
+        head=createNewNode(data);
+        return;
+    }
+    Node* temp=head;
+    while (temp->data!=data){
+        temp=temp->next;
+    }
+    Node* newptr=createNewNode(data);
+    newptr->prev=temp;
+    newptr->next=temp->next;
+    newptr->next->prev=newptr;
+    temp->next=newptr;
+}
+void deleteAtFront(Node* &head){
+    if(head== nullptr){
+        cout<<"list is empty";
+    }
+    Node* temp=head;
+    head=temp->next;
+    delete temp;
+}
+
+void deleteAtEnd(Node* &head){
+    if(head== nullptr){
+        cout<<"list is empty";
+    }
+    Node* temp=head;
+    while (temp->next!= nullptr){
+        temp=temp->next;
+    }
+    temp->prev->next= nullptr;
+    delete temp;
+}
+void deleteFromPos(Node* &head,int pos){
+    if(head== nullptr){
+        cout<<"list is empty";
+    }
+    Node* temp=head;
+    int i=1;
+
+    while (i!=pos){
+        temp=temp->next;
+        i++;
+    }
+    temp->next->prev=temp->prev;
+    temp->prev->next=temp->next;
+    delete temp;
+}
+
+void deleteFromKey(Node* &head,int key){
+    if(head== nullptr){
+        cout<<"list is empty";
+    }
+    Node* temp=head;
+    while (temp->data!=key){
+        temp=temp->next;
+    }
+    temp->next->prev=temp->prev;
+    temp->prev->next=temp->next;
+    delete temp;
+}
+void search(Node* &head,int data){
+    if (head== nullptr){
+        cout<<"list is empty";
+    }
+    Node* temp=head;
+    while (temp->data!=data && temp->next!= nullptr){
+        temp=temp->next;
+    }
+    if (temp->data==data ){
+        cout<<"key is found";
+    }else{
+        cout<<"key is not found";
+    }
+
+}
+void updateFromkey(Node* &head,int data,int newdata){
+    if(head== nullptr){
+        cout<<"list is empty";
+    }
+    Node* temp=head;
+    while (temp->data!=data && temp->next!= nullptr){
+        temp=temp->next;
+    }
+    if(temp->data==data){
+        temp->data=newdata;
+    }else{
+        cout<<"key not found";
+    }
+
+}
+
 
 
 int main() {
@@ -97,7 +191,9 @@ int main() {
     insertAtEnd(head,7);
     cout<<count(head)<<endl;
     insertAfterPos(head,6,5);
+    updateFromkey(head,3,12);
     printLinkedList(head);
+
 
     return 0;
 }
